@@ -9,22 +9,26 @@ def garden_operations(operation_number):
 		"plant" + 42
 
 def test_error_types():
-	try:
-		garden_operations(0)
-	except:
-		print("Caught ValueError")
+	print("=== Garden Error Types Demo ===")
 
-	try:
-		garden_operations(1)
-	except:
-		print("Caught ZeroDivisionError")
+	for operation_num in range(5):
+		print(f"Testing number: {operation_num}")
 
-	try:
-		garden_operations(2)
-	except:
-		print("Caught FileNotFoundError")
+		try:
+			garden_operations(operation_num)
+			print("Operation completed successfully")
 
-	try:
-		garden_operations(3)
-	except:
-		print("Caught incompatible type of datas")
+		except ValueError as e:
+			print(f"Caught ValueError: {e}\n")
+
+		except ZeroDivisionError as e:
+			print(f"Caught ZeroDivisionError: {e}\n")
+
+		except FileNotFoundError as e:
+			print(f"Caught FileNotFoundError: {e}\n")
+
+		except TypeError as e:
+				print(f"Caught TypeError: {e}\n")
+
+if __name__ == "__main__":
+	test_error_types()
