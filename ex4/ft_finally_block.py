@@ -6,13 +6,12 @@ def water_plant(plant_name: str):
 
 	print(f"Watering {plant_name}: [OK]")
 
-def test_watering_system():
+def test_watering_system(plant_names):
 	print("Opening watering system")
 
 	try:
-		water_plant("Tomato")
-		water_plant("Lettuce")
-		water_plant("Carrots")
+		for plant in plant_names:
+			water_plant(plant)
 
 	except PlantError as e:
 		print(f"Caught PlantError: {e}")
@@ -26,6 +25,9 @@ if __name__ == "__main__":
 	print("=== Garden Watering System ===")
 
 	print("Testing valid plants...")
-	test_watering_system()
+	test_watering_system(["Tomato", "Lettuce", "Carrots"])
 
 	print("Testing invalid plants...")
+	test_watering_system(["Tomato", "lettuce", "carrots"])
+
+	print("Cleanup always happens, even with errors!")
